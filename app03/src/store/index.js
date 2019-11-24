@@ -4,9 +4,10 @@ import createSagaMiddleware from 'redux-saga';
 import reducers from'./reducers';
 import sagas from './sagas';
 
-const middlewares = [];
+const sagaMonitor = process.env.NODE_ENV === 'development' ? console.tron.createSagaMonitor() :  null;
 
-const sagaMiddlewares = createSagaMiddleware();
+const middlewares = [];
+const sagaMiddlewares = createSagaMiddleware({ sagaMonitor });
 middlewares.push(sagaMiddlewares);
 
 const composer = process.env.NODE_ENV === 'development' 
