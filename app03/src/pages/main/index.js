@@ -2,7 +2,7 @@ import React , { Fragment, Component } from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as FavoriteActions from '../../store/actions/favorites';
+import { Creators as FavoriteActions }  from '../../store/ducks/favorites';
 
 
 class Main extends Component {
@@ -28,6 +28,7 @@ class Main extends Component {
                     />
                     <button type="submit">Adicionar</button>
                     { this.props.favorites.loading && <span>Carregando</span> }
+                    {!! this.props.favorites.error && (<span>{this.props.favorites.error}</span>)}
                 </form>
                 <ul>
                     {
